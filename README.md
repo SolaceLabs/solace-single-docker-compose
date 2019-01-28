@@ -15,11 +15,11 @@ The example shown, which makes use of Solace PubSub+ Standard, is suitable for u
 It's assumed you have:
 
 * If you are using Windows:
- * Windows 10 Pro.
- * Docker for Windows installed, with at least 2 GiB of memory dedicated to Docker for Windows. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-windows/#advanced) page.
+  * Windows Pro 10.
+  * Docker for Windows installed, with at least 2 GiB of memory dedicated to Docker for Windows. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-windows/#advanced) page.
 * If you are using macOS:
- * Mac OS X Yosemite 10.10.3 or higher.
- * Docker for Mac installed, with at least 2 GiB of memory dedicated to Docker for Mac. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-mac/#advanced) page.
+  * Mac OS X Yosemite 10.10.3 or higher.
+  * Docker for Mac installed, with at least 2 GiB of memory dedicated to Docker for Mac. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-mac/#advanced) page.
 
  
 <a name="Step1"></a>
