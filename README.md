@@ -3,8 +3,8 @@ Set Up Single Software Message Broker
 This project provides instructions and tools to use Docker Compose to configure a single Solace PubSub+ software message broker Docker container on a desktop. 
 ## Contents
 * [Before you begin](#before-you-begin)
-* [Step 1: Get an Image](#Step1) 
-* [Step 2: Run the Container](#Step2) 
+* [Step 1: Download the Docker Compose Template](#Step1) 
+* [Step 2: Create a PubSub+ Software Message Broker](#Step2) 
 * [Step 3: Manage the Container](#Step3) 
 * [Next Steps](#next-steps) 
 <br><br>
@@ -23,47 +23,25 @@ It's assumed you have:
 
  
 <a name="Step1"></a>
-## Step 1: Get an Image
-Pull the message broker image from the Docker repository using these two steps:
-1. Start Docker and opne a command-line terminal
-2. Pull the image:
+## Step 1: Download the Docker Compose Template
+Clone the GitHub repository containing the Docker Compose template:
 ```
-> docker pull solace/solace-pubsub-standard
+git clone https://github.com/SolaceLabs/solace-single-software-message-broker.git
+git cd solace-single-software-message-broker/template
 ```
-When loading is inished, you can check the iamge with the `images` command.
-```
-docker images
-REPOSITORY                      TAG     IMAGE ID      CREATED       SIZE
-solace/solace-pubsub-standard   latest  b8a61124d92f  10 days ago   1.11GB      
-```
-This example assumes that you are using **Solace PubSub+ Standard**. If you want to use another edition, you need to obtain the appropriate message broker package:
-* **Solace PubSub+ Enterprise Evaluation Edition**: Go to the Solace [Downloads](https://dev.solace.com/downloads/) page. Then select Download in the Solace PubSub+ Enterprise Evaluation Edition Docker Images section. You will be able to download a compressed archive file called `solace-pubsub-evaluation-<version>-docker.tar.gz`.
-* **Solace PubSub+ Enterprise**: If you have purchased a Docker image of Solace PubSub+ Enterprise, Solace will give you information for how to download the compressed tar archive package from a secure Solace server. Contact Solace Support at support@solace.com if you require assistance.
-* Once you've obtained the package, start Docker and [load](https://docs.docker.com/engine/reference/commandline/load/) the image.
-For example:
-```
-> docker load -i C:\Users\username\Downloads\solace-pubsub-evaluation-8.10.x.x-docker.tar.gz
-```
+
 <a name="Step2"></a>
-## Step 2: Run the Container
-Once you have loaded the image, you can run the container on your Windows host using Docker's `run` command:
+## Step 2: Create a PubSub+ Software Message Broker
+Run the following command to create a PubSub+ software message broker using the Compose template:
 ```
-> docker run -d -p 8080:8080 -p 55555:55555 --shm-size=2g --env username_admin_globalaccesslevel=admin --env username_admin_password=admin --name=solace solace/solace-pubsub-standard
+docker-compose -f PubSubStandard_singleNode.yml up -d
 ```
-This example runs a message broker named `solace`, using the `latest` PubSub+ Standard image pulled from Docker Hub, creates an `admin` user with global access permissions, and publishes the following message broker container ports to the same ports on the Windows host:
-* port 8080—enables SEMP management traffic to the container. Use this port when connecting to the container using the PubSub+ Manager (refer to [PubSub+ Manager Overview](https://docs.solace.com/Solace-PubSub-Manager/PubSub-Manager-Overview.htm) for more information).
-* port 55555—enables SMF data to pass through the container.
+The Compose template runs a message broker named `pubSubStandardSingleNode`, using the `latest` PubSub+ Standard image pulled from Docker Hub, creates an `admin` user with global access permissions, and publishes the following message broker container ports to the same ports on the macOS host:
+* port 8080—enables SEMP management traffic to the container. Use this port when connecting to the container using the  PubSub+ Manager (refer to [Solace PubSub+ Manager] for more information).
+* port 55555—enables SMF data to pass through the container. 
+To use additional services, you can edit the compose template to publish each corresponding port. For example, to  enable AMQP over TLS, uncomment the appropriate line in the compose template (`- '5671:5671'`). For more information about the default ports used for each service, refer to [Configuration Defaults]().
+Once the container is created, it will take about 60 seconds for the message broker to finish activating. 
 
-To use additional services, you must publish each corresponding port. For example, to pass AMQP encrypted traffic, you need to publish port 5671. For more information about the default ports used for each service, refer to [Software Message Broker Configuration Defaults](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/SW-Broker-Configuration-Defaults.htm).
-
-You can use Dcoker's `ps` commant to check on the status of the message vroker container one it's running.
-```
-> docker ps
-```
-The `STATUS` column associate with the message broker displays if the container is running and for how long.
-The `PORTS` column associate with the message broker displays the port mapping from the Windows host to the container.
-
-**NOTE**:  If you loaded the image from a compressed tar archive, replace `solace/solace-pubsub-standard` in the example with the repository and tag that corresponds with your image. For example, if you loaded version 8.10.0.1022 of the Solace PubSub+ Evaluation Edition, use `solace-pubsub-evaluation:8.10.0.1022`.
 
 <a name="Step3"></a>
 ## Step 3: Manage the Container
