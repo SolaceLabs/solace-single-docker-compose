@@ -1,6 +1,8 @@
 Set Up Single Software Message Broker
 =====
-This project provides instructions and tools to get a single [Solace PubSub+ software message broker](https://solace.com/products/software) Docker container up-and-running on a desktop using Docker Compose. If you are interested in setting up message brokers in an High Availability (HA) redundancy group, take a look at [Configure High-availability Groups Using Docker Compose](https://github.com/SolaceLabs/solace-ha-docker-compose).
+This project provides instructions and tools to get a single [Solace PubSub+ software message broker](https://solace.com/products/software) Docker container up-and-running on a desktop using Docker Compose. 
+
+If you are interested in setting up message brokers in an High Availability (HA) redundancy group, take a look at [Configure High-availability Groups Using Docker Compose](https://github.com/SolaceLabs/solace-ha-docker-compose).
 ## Contents
 * [Before you begin](#before-you-begin)
 * [Step 1: Download the Docker Compose Template](#Step1) 
