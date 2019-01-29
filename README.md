@@ -16,8 +16,8 @@ The example shown, which makes use of Solace PubSub+ Standard, is suitable for u
 
 It's assumed you have:
 
-* If you are using Windows: Docker for Windows installed, with at least 2 GiB of memory dedicated to Docker for Windows. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-windows/#advanced) page.
-* If you are using macOS: Docker for Mac installed, with at least 2 GiB of memory dedicated to Docker for Mac. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-mac/#advanced) page.
+* If you are using Windows: [Docker for Windows installed](https://docs.docker.com/docker-for-windows/install/), with at least 2 GiB of memory dedicated to Docker for Windows. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-windows/#advanced) page.
+* If you are using macOS: [Docker for Mac installed](https://docs.docker.com/docker-for-mac/install/), with at least 2 GiB of memory dedicated to Docker for Mac. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-mac/#advanced) page.
 
  
 <a name="Step1"></a>
@@ -48,7 +48,7 @@ You can access the Solace management tool, [PubSub+ Manager](https://docs.solace
 
 Solace PubSub+ Manager management access:
 1. Open a browser and enter this url: http://localhost:8080.
-2. Log in as user `admin` with password `admin`.
+2. Log in as user `admin` with default password `admin`.
 
 Solace CLI management access:
 1. Enter the following `docker exec` command:
