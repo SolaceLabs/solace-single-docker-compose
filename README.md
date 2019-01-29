@@ -24,8 +24,8 @@ It's assumed you have:
 ## Step 1: Download the Docker Compose Template
 Clone the GitHub repository containing the Docker Compose template:
 ```
-git clone https://github.com/SolaceLabs/solace-single-software-message-broker.git
-cd solace-single-software-message-broker/template
+git clone https://github.com/SolaceLabs/solace-single-docker-compose.git
+cd solace-single-docker-compose/template
 ```
 
 <a name="Step2"></a>
