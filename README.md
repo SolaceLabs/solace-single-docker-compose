@@ -29,7 +29,7 @@ It's assumed you have:
 Clone the GitHub repository containing the Docker Compose template:
 ```
 git clone https://github.com/SolaceLabs/solace-single-software-message-broker.git
-git cd solace-single-software-message-broker/template
+cd solace-single-software-message-broker/template
 ```
 
 <a name="Step2"></a>
