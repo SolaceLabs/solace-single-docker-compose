@@ -1,4 +1,4 @@
-Configure a Standlone Software Message Broker
+Configure a Standalone Software Message Broker
 =====
 This project provides instructions and tools to get a single [Solace PubSub+ software message broker](https://solace.com/products/software) Docker container up-and-running on a desktop using Docker Compose. 
 
