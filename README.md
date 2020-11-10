@@ -12,14 +12,19 @@ If you are interested in setting up message brokers in an High Availability (HA)
 <br><br>
 <a name="before-you-begin"></a>
 ## Before you begin
-The example shown, which makes use of Solace PubSub+ Standard, is suitable for use with up to 100 client connections. However, a maximum of 1,000 client connections can be configured on your platform, provided appropriate resources have been provisioned. For information on client connection scaling, refer to [Scaling Tiers for Software Message Brokers](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/Configuring-Conn-Scale-Tiers.htm).
+The example shown, which makes use of Solace PubSub+ Standard, is suitable for use with up to 100 client connections. However, a maximum of 1,000 client connections can be configured on your platform, provided appropriate resources have been provisioned. For more information about system requirements, see [Editions of PubSub+ Event Broker: Software](https://docs.solace.com/Solace-SW-Broker-Set-Up/Setting-Up-SW-Brokers.htm) and [System Resource Requirements](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/System-Resource-Requirements.htm).
 
-It's assumed you have:
+You must have installed one of:
 
-* If you are using Windows: [Docker for Windows installed](https://docs.docker.com/docker-for-windows/install/), with at least 2 GiB of memory dedicated to Docker for Windows. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-windows/#advanced) page.
-* If you are using macOS: [Docker for Mac installed](https://docs.docker.com/docker-for-mac/install/), with at least 2 GiB of memory dedicated to Docker for Mac. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-mac/#advanced) page.
+* [Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/) with at least 2 GiB of memory dedicated to Docker Engine. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-windows/#advanced) page.
+* [Docker Desktop for Mac](https://docs.docker.com/docker-for-mac/install/) with at least 2 GiB of memory dedicated to Docker Engine. For more information about allocating memory and swap space, refer to the [Docker Settings](https://docs.docker.com/docker-for-mac/#advanced) page.
 
- 
+Ensure that Docker Compose is running by entering the following command:
+```
+docker-compose --help
+```
+If the help text is not displayed, you may need to install Docker Compose. See [Install Docker Compose](https://docs.docker.com/compose/install/) for instructions.
+
 <a name="Step1"></a>
 ## Step 1: Download the Docker Compose Template
 Clone the GitHub repository containing the Docker Compose template:
@@ -35,9 +40,17 @@ Run the following command to create a PubSub+ software message broker using the 
 docker-compose -f PubSubStandard_singleNode.yml up -d
 ```
 The Compose template runs a message broker named `pubSubStandardSingleNode`, using the `latest` PubSub+ Standard image pulled from Docker Hub, creates an `admin` user with global access permissions, and publishes the following message broker container ports to the same ports on the host:
-* port 8080—enables [SEMP](https://docs.solace.com/SEMP/Using-SEMP.htm) management traffic to the container. Use this port when connecting to the container using the  [PubSub+ Manager](https://docs.solace.com/Solace-PubSub-Manager/PubSub-Manager-Overview.htm).
-* port 55555—enables [SMF](https://docs.solace.com/Messaging-Basics/SMF-Topics.htm) data to pass through the container. 
-To use additional services, you can edit the compose template to publish each corresponding port. For example, to  enable AMQP over TLS, uncomment the appropriate line in the compose template (`- '5671:5671'`). For more information about the default ports used for each service, refer to [Software Message Broker Configuration Defaults](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/SW-Broker-Configuration-Defaults.htm).
+
+* port 8008 -- Web transport
+* port 1883 -- MQTT Default VPN
+* port 5672 -- AMQP Default VPN
+* port 8000 -- MQTT Default VPN over WebSockets
+* port 8080 -- SEMP / PubSub+ Manager
+* port 9000 -- REST Default VPN
+* port 55555 -- SMF
+* port 2222 -- SSH connection to the Solace CLI
+
+For more information about the default ports used for each service, refer to [Software Message Broker Configuration Defaults](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/SW-Broker-Configuration-Defaults.htm).
 Once the container is created, it will take about 60 seconds for the message broker to finish activating. 
 
 
@@ -47,7 +60,7 @@ Once the container is created, it will take about 60 seconds for the message bro
 You can access the Solace management tool, [PubSub+ Manager](https://docs.solace.com/Solace-PubSub-Manager/PubSub-Manager-Overview.htm), or the [Solace CLI](https://docs.solace.com/Solace-CLI/Using-Solace-CLI.htm) to start issuing configuration or monitoring commands on the message broker.
 
 Solace PubSub+ Manager management access:
-1. Open a browser and enter this url: http://localhost:8080.
+1. Open a browser and enter this url: _http://localhost:8080_.
 2. Log in as user `admin` with default password `admin`.
 
 Solace CLI management access:
@@ -67,11 +80,6 @@ solace(configure)#
 ## Next Steps
 You now have a message broker Docker container with a basic configuration that is ready for messaging tasks.
 
-There are additional configuration tasks you can make use of in the following topics:
-* [Software Message Broker Configuration Defaults](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/SW-Broker-Configuration-Defaults.htm)—Go through the default port numbers for message broker services.
-* [Scaling Tiers for Software Message Brokers](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/Configuring-Conn-Scale-Tiers.htm)—Learn about message broker connection scaling tiers.
-* [Docker Image Specific Topics](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/Docker-Tasks/Container-Configuration-Tasks.htm)—Learn to prepare the message broker Docker container for a variety of messaging functions.
-
-Also, in order to fully utilize the message broker's features, you should familiarize yourself with the configuration operations common to both Solace PubSub+ software message brokers and appliances. For information, see the topics in the [Configuration](https://docs.solace.com/Configuration.htm) section.
+To familiarize yourself with the some of the features of PubSub+ software message brokers and appliances, see [Best Practices](https://docs.solace.com/best-practices.htm) and the [Feature Index](https://docs.solace.com/feature-index.htm).
 
 When you are feeling comfortable with your message broker, you can test messaging using the [Solace SDKPerf](https://docs.solace.com/SDKPerf/SDKPerf.htm?Highlight=SDKperf#Quick) application. You can download SDKPerf from the dev.solace.com [Downloads](https://dev.solace.com/downloads/) page.
