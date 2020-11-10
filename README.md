@@ -80,11 +80,6 @@ solace(configure)#
 ## Next Steps
 You now have a message broker Docker container with a basic configuration that is ready for messaging tasks.
 
-There are additional configuration tasks you can make use of in the following topics:
-* [Software Message Broker Configuration Defaults](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/SW-Broker-Configuration-Defaults.htm)—Go through the default port numbers for message broker services.
-* [Scaling Tiers for Software Message Brokers](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/Configuring-Conn-Scale-Tiers.htm)—Learn about message broker connection scaling tiers.
-* [Docker Image Specific Topics](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/Docker-Tasks/Container-Configuration-Tasks.htm)—Learn to prepare the message broker Docker container for a variety of messaging functions.
-
 To familiarize yourself with the some of the features of PubSub+ software message brokers and appliances, see [Best Practices](https://docs.solace.com/best-practices.htm) and the [Feature Index](https://docs.solace.com/feature-index.htm).
 
 When you are feeling comfortable with your message broker, you can test messaging using the [Solace SDKPerf](https://docs.solace.com/SDKPerf/SDKPerf.htm?Highlight=SDKperf#Quick) application. You can download SDKPerf from the dev.solace.com [Downloads](https://dev.solace.com/downloads/) page.
