@@ -51,7 +51,9 @@ The Compose template runs a message broker named `pubSubStandardSingleNode`, usi
 * port 2222 -- SSH connection to the Solace CLI
 
 For more information about the default ports used for each service, refer to [Software Message Broker Configuration Defaults](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/SW-Broker-Configuration-Defaults.htm).
-Once the container is created, it will take about 60 seconds for the message broker to finish activating. 
+Once the container is created, it will take about 60 seconds for the message broker to finish activating.
+
+**Note:** On MacOS Big Sur, port 55555 (the default SMF port for the software broker) is blocked. If this port is mapped to a port on a Docker container, the container fails to start, either silently or with a "port in use" error. To avoid this problem with MacOS Big Sur, map the SMF port to a different port on the host.
 
 
 <a name="Step3"></a>
