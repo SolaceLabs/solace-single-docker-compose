@@ -8,17 +8,17 @@ services:
     shm_size: 1g
     ulimits:
       core: 1
-    #  nofile:
-    #    soft: 2448
-    #    hard: 6592
+      nofile:
+        soft: 2448
+        hard: 6592
     deploy:
       restart_policy:
         condition: on-failure
         max_attempts: 1
     ports:
-    #Port Mappings:  Ports are mapped straight through from host to
-    #container.  This may result in port collisions on commonly used
-    #ports that will cause failure of the container to start.
+    #Port Mappings:  With the exception of SMF, ports are mapped straight
+    #through from host to container.  This may result in port collisions on
+    #commonly used ports that will cause failure of the container to start.
       #Web transport
       - '8008:8008'
       #Web transport over TLS
