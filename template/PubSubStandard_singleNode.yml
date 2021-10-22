@@ -16,9 +16,9 @@ services:
         condition: on-failure
         max_attempts: 1
     ports:
-    #Port Mappings:  Ports are mapped straight through from host to
-    #container.  This may result in port collisions on commonly used
-    #ports that will cause failure of the container to start.
+    #Port Mappings:  With the exception of SMF, ports are mapped straight
+    #through from host to container.  This may result in port collisions on
+    #commonly used ports that will cause failure of the container to start.
       #Web transport
       - '8008:8008'
       #Web transport over TLS
@@ -44,7 +44,7 @@ services:
       #REST Default VPN over TLS
       #- '9443:9443'
       #SMF
-      - '55555:55555'
+      - '55554:55555'
       #SMF Compressed
       #- '55003:55003'
       #SMF over TLS
