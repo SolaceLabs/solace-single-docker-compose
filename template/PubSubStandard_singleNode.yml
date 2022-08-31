@@ -5,6 +5,8 @@ services:
   primary:
     container_name: pubSubStandardSingleNode
     image: solace/solace-pubsub-standard:latest
+    volumes:
+      - "storage-group:/var/lib/solace"
     shm_size: 1g
     ulimits:
       core: 1
@@ -22,9 +24,9 @@ services:
       #Web transport
       - '8008:8008'
       #Web transport over TLS
-      #- '1443:1443'
+      - '1443:1443'
       #SEMP over TLS
-      #- '1943:1943'
+      - '1943:1943'
       #MQTT Default VPN
       - '1883:1883'
       #AMQP Default VPN over TLS
@@ -55,3 +57,6 @@ services:
       - username_admin_globalaccesslevel=admin
       - username_admin_password=admin
       - system_scaling_maxconnectioncount=100
+
+volumes:
+  storage-group:
