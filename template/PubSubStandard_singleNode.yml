@@ -9,7 +9,7 @@ services:
       - "storage-group:/var/lib/solace"
     shm_size: 1g
     ulimits:
-      core: 1
+      core: -1
       nofile:
         soft: 2448
         hard: 6592
@@ -30,27 +30,27 @@ services:
       #MQTT Default VPN
       - '1883:1883'
       #AMQP Default VPN over TLS
-      #- '5671:5671'
+      - '5671:5671'
       #AMQP Default VPN
       - '5672:5672'
       #MQTT Default VPN over WebSockets
       - '8000:8000'
       #MQTT Default VPN over WebSockets / TLS
-      #- '8443:8443'
+      - '8443:8443'
       #MQTT Default VPN over TLS
-      #- '8883:8883'
+      - '8883:8883'
       #SEMP / PubSub+ Manager
       - '8080:8080'
       #REST Default VPN
       - '9000:9000'
       #REST Default VPN over TLS
-      #- '9443:9443'
+      - '9443:9443'
       #SMF
       - '55554:55555'
       #SMF Compressed
-      #- '55003:55003'
+      - '55003:55003'
       #SMF over TLS
-      #- '55443:55443'
+      - '55443:55443'
       #SSH connection to CLI
       - '2222:2222'
     environment:
