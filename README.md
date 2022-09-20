@@ -47,8 +47,16 @@ The Compose template runs a message broker named `pubSubStandardSingleNode`, usi
 * port 8000 -- MQTT Default VPN over WebSockets
 * port 8080 -- SEMP / PubSub+ Manager
 * port 9000 -- REST Default VPN
-* port 55555 -- SMF
+* port 55554 -- SMF
 * port 2222 -- SSH connection to the Solace CLI
+* port 5671 -- AMQP Default VPN over TLS
+* port 8443 -- MQTT Default VPN over WebSockets/TLS
+* port 8883 -- MQTT Default VPN over TLS
+* port 9443 -- REST Default VPN over TLS
+* port 55003 -- SMF Compressed
+* port 55443 -- SMF over TLS
+* port 1443 -- Web Transport over TLS
+* port 1943 -- SEMP over TLS
 
 For more information about the default ports used for each service, refer to [Software Message Broker Configuration Defaults](https://docs.solace.com/Configuring-and-Managing/SW-Broker-Specific-Config/SW-Broker-Configuration-Defaults.htm).
 Once the container is created, it will take about 60 seconds for the message broker to finish activating.
