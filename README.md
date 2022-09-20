@@ -47,7 +47,7 @@ The Compose template runs a message broker named `pubSubStandardSingleNode`, usi
 * port 8000 -- MQTT Default VPN over WebSockets
 * port 8080 -- SEMP / PubSub+ Manager
 * port 9000 -- REST Default VPN
-* port 55555 -- SMF
+* port 55554 -- SMF
 * port 2222 -- SSH connection to the Solace CLI
 * port 5671 -- AMQP Default VPN over TLS
 * port 8443 -- MQTT Default VPN over WebSockets/TLS
