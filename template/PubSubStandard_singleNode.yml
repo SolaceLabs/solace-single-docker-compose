@@ -10,7 +10,7 @@ services:
       core: 1
       nofile:
         soft: 2448
-        hard: 6592
+        hard: 1048576
     deploy:
       restart_policy:
         condition: on-failure
